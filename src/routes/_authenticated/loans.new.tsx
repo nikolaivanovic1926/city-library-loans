@@ -30,7 +30,7 @@ function AddLoan() {
   const queryClient = useQueryClient();
   const members = useQuery(membersQuery);
   const [form, setForm] = useState(empty);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof ReturnType<typeof empty>, string>>>({});
   const [busy, setBusy] = useState(false);
   const set = (k: keyof ReturnType<typeof empty>, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
