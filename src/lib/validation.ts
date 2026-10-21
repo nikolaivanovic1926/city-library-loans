@@ -31,11 +31,11 @@ export const loanSchema = z
     path: ["dueDate"],
   });
 
-export function fieldErrors(error: z.ZodError) {
+export function fieldErrors<T>(error: z.ZodError<T>): Partial<Record<keyof T & string, string>> {
   const out: Record<string, string> = {};
   for (const issue of error.issues) {
     const key = String(issue.path[0]);
     if (!out[key]) out[key] = issue.message;
   }
-  return out;
+  return out as Partial<Record<keyof T & string, string>>;
 }

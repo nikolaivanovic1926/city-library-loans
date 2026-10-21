@@ -23,7 +23,7 @@ export const Route = createFileRoute("/login")({
 function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof { email: string; password: string }, string>>>({});
   const [formError, setFormError] = useState("");
   const [busy, setBusy] = useState(false);
 

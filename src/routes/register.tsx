@@ -30,7 +30,7 @@ const fields = [
 function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ fullName: "", email: "", password: "", confirmPassword: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof { fullName: string; email: string; password: string; confirmPassword: string }, string>>>({});
   const [formError, setFormError] = useState("");
   const [busy, setBusy] = useState(false);
 

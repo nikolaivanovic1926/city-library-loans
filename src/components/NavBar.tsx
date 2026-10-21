@@ -23,7 +23,10 @@ export function NavBar() {
     await queryClient.cancelQueries();
     queryClient.clear();
     const { error } = await supabase.auth.signOut();
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("You have been logged out");
     navigate({ to: "/login", replace: true });
   }
